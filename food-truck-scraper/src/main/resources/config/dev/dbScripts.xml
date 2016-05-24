@@ -1,0 +1,38 @@
+<DbScripts>
+	<Scripts Version="1">
+		<Script Type="DDL">
+CREATE TABLE ui_app (ui_app_id integer Not null, name Varchar(50), display_name Varchar(50));
+CREATE TABLE ui_form( id integer Not Null, form_table_name Varchar(100), order_by integer, display_name Varchar(100), name_column_display_name Varchar(50), group_by Varchar(30), ui_app_id integer);
+CREATE TABLE ui_form_link( ui_form_id integer Not Null, ui_form_link_id integer, link_name Varchar(50), single_select boolean);
+
+			CREATE TABLE users (
+			id serial primary key,
+			name varchar(100) NOT NULL,
+			password varchar(20) NOT NULL,
+			enabled
+			integer NOT NULL
+			);
+
+			CREATE TABLE user_role (
+			userid integer NOT NULL,
+			role_id integer NOT NULL
+			);
+			
+			CREATE TABLE foodcart (
+			id serial primary key,
+			name varchar(100) NOT NULL,
+			address varchar(20) NOT NULL,
+			enabled
+			);
+			
+		</Script>
+
+		<Script Type="DML">
+insert into ui_app values (1, 'foodcart_admin', 'Foodcart Admin');
+insert into Ui_Form values(1, 'user', 1, 'User', '', 'Form', 1);
+insert into Ui_Form values(2, 'foodcart', 2, 'Food Cart', '', 'Form', 1);
+
+		</Script>
+	</Scripts>
+
+</DbScripts>

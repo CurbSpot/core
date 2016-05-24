@@ -1,0 +1,1 @@
+web: java -Ddatabase.url=$DATABASE_URL -Dserver.port=$PORT -jar  target/authority_admin.jar --host=0.0.0.0

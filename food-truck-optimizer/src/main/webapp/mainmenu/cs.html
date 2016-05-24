@@ -1,0 +1,53 @@
+    <div class="container FullWidth">  
+      <div class="row">
+		<div class="navbar navbar-default" role="navigation">
+		    <div class="container-fluid">
+		        <!--div class="navbar-header">
+		            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		                <span class="sr-only">Toggle navigation</span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		                <span class="icon-bar"></span>
+		            </button>
+		        </div-->
+		        <div class="navbar-collapse collapse">
+		            <ul class="nav navbar-nav">
+		                <li  ng-class="{ active: mdc.selected == 'formbuilder' }"><img src="assets/img/foodtruck.jpg" alt="UiForm"> </li>
+		                <li  ng-class="{ active: mdc.selected == 'formbuilder' }"><a ui-sref="formbuilder"><b>{{ mdc.applicationDisplayName }}</b></a></li>
+		            </ul>
+		        </div><!--/.nav-collapse -->
+		    </div><!--/.container-fluid -->
+		</div>
+  	  </div>
+
+  	  <div class="help-block alert alert-success" ng-show="mdc.isDataSaved" id="divSuccess">
+  	  		<a href="#" class="close" data-dismiss="alert">&times;</a>
+			<strong>Success!&nbsp;</strong>{{successMsg}}
+	  </div>
+	  <div class="alert alert-danger" ng-show="mdc.isError" id="divError">
+  	  		<a href="#" class="close" data-dismiss="alert">&times;</a>
+			<strong>Error!&nbsp;</strong>{{errorMsg}} 
+	  </div>
+  	  <div class="row col-md-12">
+		  <div class="col-md-3">
+   	        <table class="table table-hover table-striped table-condensed">
+	            <tbody ng-repeat="menuEntry in mdc.menuEntries | filter:query">
+	            	<tr><td><span style="font-weight:bold">{{menuEntry.group}}</span></td></tr>
+ 	                <tr ng:repeat="menuEntryList in menuEntry.tableList">
+						<td>{{menuEntryList.displayName}}: </td>
+						<td><a ui-sref="cs.listAttributes( {app_name: '{{ mdc.applicationName }}', formid: '{{menuEntryList.id}}', pageno: 1 } )">List</a></td> 
+						<td>|</td> 
+						<td><a ui-sref="cs.renderAttributes( {app_name: '{{ mdc.applicationName }}', formid: '{{menuEntryList.id}}', dataid: '0' })">Create</a></td>
+					</tr>
+	            </tbody>
+	        </table>
+	        
+		  </div>
+		  <div class="col-md-9">
+				<div ui-view></div>
+		  </div>
+		  <div class="col-md-3">
+		  </div>
+      </div>   
+	</div>
+
